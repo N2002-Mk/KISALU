@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kisalu – Le travail congolais, à portée de main</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+:root{color-scheme:light;--bg:#faf8f3;--sf:#fff;--tx:#14231f;--mu:#5d6b66;--ln:#e2ddd0;--ac:#0b5c8f;--ac2:#f2c200;--rd:#c8102e;--ok:#1f7a4d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1816;--sf:#172421;--tx:#eef2ee;--mu:#9fb0a9;--ln:#2a3a36;--ac:#5db3ec;--ok:#58c58f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1816;--sf:#172421;--tx:#eef2ee;--mu:#9fb0a9;--ln:#2a3a36;--ac:#5db3ec;--ok:#58c58f}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.15}
+header{background:var(--ac);color:#fff;padding:28px 20px 24px;border-bottom:6px solid var(--ac2);position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;background:linear-gradient(90deg,var(--ac2) 0 60%,var(--rd) 60% 100%)}
+.w{max-width:1000px;margin:0 auto}
+.brand{font:700 15px Georgia,serif;letter-spacing:.5px;margin-bottom:14px}
+header h1{font-size:clamp(28px,6vw,46px);max-width:15em}
+header p{max-width:36em;margin:10px 0 18px;opacity:.92}
+.search{display:flex;gap:8px;flex-wrap:wrap}
+input,select,textarea,button{font:inherit;color:var(--tx)}
+input,select,textarea{background:var(--sf);border:1px solid var(--ln);border-radius:8px;padding:10px 12px;min-width:0}
+.search input{flex:2 1 200px}.search select{flex:1 1 130px}
+button{cursor:pointer;border:0;border-radius:8px;padding:10px 16px;background:var(--ac2);color:#14231f;font-weight:700}
+button.sec{background:transparent;border:1px solid var(--ln);color:var(--tx);font-weight:600}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+nav{display:flex;gap:6px;padding:14px 20px 0;max-width:1000px;margin:0 auto;overflow-x:auto}
+nav button{background:transparent;border:0;border-bottom:3px solid transparent;border-radius:0;color:var(--mu);padding:8px 12px;white-space:nowrap}
+nav button[aria-selected=true]{color:var(--tx);border-color:var(--rd)}
+main{padding:16px 20px 60px;max-width:1000px;margin:0 auto}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:8px}
+.chip{background:var(--sf);border:1px solid var(--ln);color:var(--tx);font-weight:500;padding:6px 12px;border-radius:99px;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--ac);border-color:var(--ac);color:#fff}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.top{display:flex;gap:12px;align-items:center}
+.av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:700 18px Georgia,serif;color:#fff;flex:none}
+.meta{color:var(--mu);font-size:14px}
+.tag{display:inline-block;font-size:13px;padding:2px 8px;border-radius:6px;background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--ac)}
+.ver{color:var(--ok);font-size:13px;font-weight:700}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:6px}
+.price{font-weight:700}
+form{display:grid;gap:12px;max-width:560px}
+label{display:grid;gap:4px;font-weight:600;font-size:14px}
+.empty{color:var(--mu);padding:30px 0}
+dialog{border:1px solid var(--ln);border-radius:12px;background:var(--sf);color:var(--tx);max-width:420px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:8px;z-index:9}
+@media (prefers-reduced-motion:no-preference){.toast{animation:in .25s}}@keyframes in{from{opacity:0}}
+body{font-family:"Nunito Sans","Trebuchet MS",system-ui,sans-serif}
+h1,h2,h3,.brand,.av{font-family:"Bricolage Grotesque",Georgia,serif}
+header{background:radial-gradient(900px 380px at 88% -10%,#1b86c9 0,transparent 60%),linear-gradient(135deg,#073b5e,#0b5c8f 60%,#0e7a6b);padding:20px 20px 40px;overflow:hidden}
+header::before{content:"";position:absolute;right:-70px;top:-70px;width:300px;height:300px;border-radius:50%;background:repeating-conic-gradient(rgba(242,194,0,.3) 0 15deg,transparent 15deg 30deg)}
+.w{position:relative}
+header h1{font-weight:800;font-size:clamp(30px,6.4vw,52px);letter-spacing:-.02em}
+.brand{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.tools{display:flex;gap:6px}.tools select{padding:5px 8px;font-size:14px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)}.tools option{color:#14231f;background:#fff}
+.search{background:var(--sf);padding:8px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.search input,.search select{border:0;background:transparent}.search select{border-left:1px solid var(--ln);border-radius:0}
+.card{border-radius:14px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+.av{background-image:linear-gradient(135deg,rgba(255,255,255,.28),transparent)}
+.chip{font-size:15px}
+.foot{max-width:1000px;margin:0 auto;padding:0 20px 40px;color:var(--mu);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="w">
+<div class="brand"><span>KISALU · kisalu = « travail » en kikongo</span><span class="tools"><select id="lang" aria-label="Langue / Language"><option value="fr">Français</option><option value="en">English</option><option value="sw">Kiswahili</option><option value="ln">Lingála</option></select><select id="cur" aria-label="Devise / Currency"><option value="USD">USD $</option><option value="CDF">CDF FC</option><option value="EUR">EUR €</option></select></span></div>
+<h1>Trouvez le bon prestataire congolais, ou trouvez du travail.</h1>
+<p>Artisans, techniciens, créatifs et entreprises, au Congo comme dans la diaspora : publiez une mission ou proposez vos services, où que vous soyez.</p>
+<div class="search" role="search">
+<input id="q" type="search" placeholder="Ex. : électricien, couturière, site web" aria-label="Rechercher">
+<select id="city" aria-label="Ville"></select>
+</div></div></header>
+
+<nav role="tablist" id="tabs">
+<button role="tab" aria-selected="true" data-t="pros">Prestataires</button>
+<button role="tab" aria-selected="false" data-t="jobs">Missions</button>
+<button role="tab" aria-selected="false" data-t="post">Publier une mission</button>
+<button role="tab" aria-selected="false" data-t="join">Devenir prestataire</button>
+<button role="tab" aria-selected="false" data-t="premium">Kisalu Premium</button>
+<button role="tab" aria-selected="false" data-t="how">Comment ça marche</button>
+<button role="tab" aria-selected="false" data-t="reviews">Témoignages</button>
+<button role="tab" aria-selected="false" data-t="admin">Administration</button>
+</nav>
+<main><div class="chips" id="chips"></div><section id="view"></section></main>
+<footer class="foot">Les montants sont convertis à un taux indicatif (1 dollar ≈ 2 800 FC ≈ 0,86 €), à remplacer par le taux du jour dans la version finale.</footer>
+
+<dialog id="dlg"><h3 id="dt"></h3><p id="db" class="meta"></p><form method="dialog" style="margin-top:12px"><button>Fermer</button></form></dialog>
+
+<script>
+const CATS=["Construction","Électricité","Plomberie","Couture et mode","Informatique","Transport et livraison","Événementiel","Agriculture","Design et marketing","Formation"];
+const CITIES=["Kinshasa","Lubumbashi","Goma","Kisangani","Bukavu","Mbuji-Mayi","Matadi","Kolwezi","Paris","Bruxelles","Montréal","Londres","Johannesburg","À distance"];
+const COL=["#0b5c8f","#c8102e","#1f7a4d","#8a5a00","#6a3d9a","#007a7a"];
+let pros=[
+{n:"Patrick Mbuyi",c:"Électricité",v:"Lubumbashi",d:"Installations, tableaux électriques, panneaux solaires.",p:"25 $/jour",r:4.8,k:41,ok:1},
+{n:"Chantal Ngalula",c:"Couture et mode",v:"Kinshasa",d:"Tenues sur mesure, pagnes, uniformes d'entreprise.",p:"dès 15 $",r:4.9,k:67,ok:1},
+{n:"Jonas Kabeya",c:"Construction",v:"Kinshasa",d:"Maçonnerie, carrelage, finitions. Équipe de 6 ouvriers.",p:"sur devis",r:4.6,k:23,ok:1},
+{n:"Esther Bahati",c:"Informatique",v:"Goma",d:"Sites web, applications, maintenance d'ordinateurs.",p:"30 $/jour",r:4.7,k:19,ok:0},
+{n:"Dieudonné Lokwa",c:"Transport et livraison",v:"Kisangani",d:"Livraison de colis et déménagements en camionnette.",p:"dès 10 $",r:4.5,k:35,ok:1},
+{n:"Grâce Mapendo",c:"Événementiel",v:"Bukavu",d:"Décoration, traiteur et sonorisation pour mariages.",p:"sur devis",r:4.8,k:28,ok:1},
+{n:"Samuel Tshibola",c:"Plomberie",v:"Mbuji-Mayi",d:"Réparation de fuites, installation sanitaire, forages.",p:"20 $/jour",r:4.4,k:15,ok:0},
+{n:"Nadine Kasongo",c:"Design et marketing",v:"Kinshasa",d:"Logos, affiches, gestion de pages pour commerces.",p:"dès 20 $",r:4.9,k:52,ok:1},
+{n:"Sarah Mpanu",c:"Design et marketing",v:"Paris",d:"Identité visuelle et sites web pour entreprises africaines et européennes. Travail à distance possible.",p:"dès 40 $",r:4.8,k:31,ok:1}];
+let jobs=[
+{t:"Carrelage d'une maison de 4 pièces",c:"Construction",v:"Kinshasa",b:"600 $",d:"Chantier à Limete, début dans 2 semaines.",a:"Famille Mukendi"},
+{t:"Site vitrine pour une boulangerie",c:"Informatique",v:"Lubumbashi",b:"250 $",d:"5 pages, photos fournies, en français.",a:"Boulangerie Soleil"},
+{t:"200 uniformes pour une école",c:"Couture et mode",v:"Goma",b:"1 200 $",d:"Livraison avant la rentrée scolaire.",a:"Complexe scolaire Umoja"},
+{t:"Livraison de sacs de maïs",c:"Transport et livraison",v:"Kisangani",b:"150 $",d:"Aller-retour vers Isangi, 3 tonnes.",a:"Coopérative Lola"},
+{t:"Logo et identité visuelle pour une start-up",c:"Design et marketing",v:"À distance",b:"400 $",d:"Client en Belgique, travail à distance, livrables en français et en anglais.",a:"Start-up Lumière"}];
+const $=s=>document.querySelector(s);let tab="pros",cat="",toastT;
+$("#city").innerHTML='<option value="">Toutes les villes</option>'+CITIES.map(c=>`<option value="${c}">${c}</option>`).join("");
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+function toast(m){clearTimeout(toastT);document.querySelectorAll(".toast").forEach(e=>e.remove());const e=document.createElement("div");e.className="toast";e.textContent=m;document.body.append(e);toastT=setTimeout(()=>e.remove(),2600)}
+function match(o){const q=$("#q").value.trim().toLowerCase(),v=$("#city").value;
+return (!cat||o.c===cat)&&(!v||o.v===v)&&(!q||JSON.stringify(o).toLowerCase().includes(q))}
+function chips(){const show=tab==="pros"||tab==="jobs";$("#chips").style.display=show?"flex":"none";
+$("#chips").innerHTML=["Tous",...CATS].map(c=>`<button class="chip" aria-pressed="${(c==="Tous"&&!cat)||c===cat}" data-c="${c}">${ICON[c]||"✨"} ${c}</button>`).join("")}
+function opt(a){return a.map(c=>`<option value="${c}">${c}</option>`).join("")}
+function render(){chips();const el=$("#view");
+if(tab==="pros"){const l=pros.filter(match);el.innerHTML=l.length?`<div class="grid">${l.map((p,i)=>`<article class="card"><div class="top"><div class="av" style="background:${COL[p.n.length%6]}">${esc(p.c[0])}</div><div><strong>Prestataire K-${1000+(p.n.length*37+p.d.length)%9000}</strong><div class="meta">${esc(p.v)}${p.ok?' · <span class="ver">Vérifié</span>':''}</div></div></div><span class="tag">${esc(p.c)}</span><div>${esc(p.d)}</div><div class="meta">★ ${p.r} (${p.k} avis)</div><div class="row"><span class="price">${esc(p.p)}</span><button data-hire="${pros.indexOf(p)}">Demander via Kisalu</button></div></article>`).join("")}</div>`:'<p class="empty">Aucun prestataire ne correspond. Essayez une autre ville ou catégorie, ou publiez une mission.</p>'}
+else if(tab==="jobs"){const l=jobs.filter(match);el.innerHTML=l.length?`<div class="grid">${l.map(j=>`<article class="card"><strong>${esc(j.t)}</strong><span class="tag">${esc(j.c)}</span><div>${esc(j.d)}</div><div class="meta">Client vérifié par Kisalu · ${esc(j.v)}</div><div class="row"><span class="price">${esc(j.b)}</span><button data-apply="${jobs.indexOf(j)}">Postuler</button></div></article>`).join("")}</div>`:'<p class="empty">Aucune mission pour ces critères.</p>'}
+else if(tab==="post"){el.innerHTML=`<h2>Publier une mission</h2><p class="meta">Décrivez votre besoin, les prestataires vous répondent.</p><form id="f1"><label>Titre<input name="t" required></label><label>Catégorie<select name="c">${opt(CATS)}</select></label><label>Ville<select name="v">${opt(CITIES)}</select></label><label>Budget (en $)<input name="b" type="number" min="1" required></label><label>Description<textarea name="d" rows="3" required></textarea></label><label>Votre nom<input name="a" required></label><button>Publier la mission</button></form>`}
+else if(tab==="premium"){el.innerHTML=premiumHtml()}else if(tab==="how"){el.innerHTML=howHtml()}else if(tab==="reviews"){el.innerHTML=reviewsHtml()}else if(tab==="admin"){el.innerHTML=adminHtml()}else{el.innerHTML=`<h2>Devenir prestataire</h2><p class="meta">Créez votre profil gratuit et recevez des demandes.</p><form id="f2"><label>Nom complet<input name="n" required></label><label>Métier<select name="c">${opt(CATS)}</select></label><label>Ville<select name="v">${opt(CITIES)}</select></label><label>Tarif (ex. : 20 $/jour)<input name="p" required></label><label>Présentez votre travail<textarea name="d" rows="3" required></textarea></label><label>Photo ou scan de votre carte d'électeur (obligatoire)<input type="file" name="idf" accept="image/*,.pdf" required></label><label>CV, si vous en avez un (PDF ou Word)<input type="file" name="cvf" accept=".pdf,.doc,.docx"></label><p class="meta">Votre carte d'électeur sert uniquement à vérifier votre identité : elle n'est jamais visible par les clients ni par les autres prestataires. 5 Mo maximum par fichier. Dans cette démonstration, les fichiers restent dans votre navigateur et ne sont envoyés nulle part.</p><button>Créer mon profil</button></form>`}}
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t)return;
+if(t.dataset.t){tab=t.dataset.t;document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b===t));render()}
+else if(t.dataset.c){cat=t.dataset.c==="Tous"?"":t.dataset.c;render()}
+else if(t.dataset.hire){const p=pros[t.dataset.hire];$("#dt").textContent="Demande envoyée à Kisalu";$("#db").textContent="Kisalu transmet votre demande à ce prestataire sans lui donner vos coordonnées. Si les deux parties sont d'accord, vous déposez le paiement chez Kisalu et la mise en relation est confirmée.";$("#dlg").showModal()}
+else if(t.dataset.idok){const p=ids[t.dataset.idok];p.vs="Identité validée";p.ok=1;render()}else if(t.dataset.idno){ids[t.dataset.idno].vs="Dossier refusé";render()}else if(t.dataset.app){apps[t.dataset.app].st="Présentée au client";render()}else if(t.dataset.adv){const d=deals[t.dataset.adv];d.st=NEXT[d.st];render()}else if(t.dataset.apply){if(until>Date.now()){apps.unshift({j:jobs[t.dataset.apply].t,n:"Nouveau candidat Premium",st:"En attente"});toast("Candidature envoyée à Kisalu, qui la transmet au client")}else{go("premium");toast("Activez Kisalu Premium pour postuler")}}});
+document.addEventListener("submit",e=>{const f=e.target;if(f.method==="dialog")return;e.preventDefault();const d=Object.fromEntries(new FormData(f));
+if(f.id==="f5"){const dl=deals[+f.elements.dl.value];reviews.unshift({s:+d.s,r:d.r,x:d.x,v:dl.v,c:dl.c});tab="reviews";toast("Témoignage publié")}else if(f.id==="f4"){const j=jobs[+f.elements.m.value],a=parseInt(j.b.replace(/\D/g,""))||0;deals.unshift({t:j.t,c:j.c,v:j.v,a,st:"Paiement sécurisé",cl:"Client à renseigner",pr:"À confirmer"});tab="reviews";toast("Accord conclu : "+a+" $ sécurisés. Prestataire : "+(a*.9)+" $, Kisalu : "+(a*.1)+" $")}else if(f.id==="f3"){until=Math.max(until,Date.now())+30*864e5;tab="jobs";toast("Premium actif jusqu'au "+new Date(until).toLocaleDateString("fr-FR"))}else if(f.id==="f1"){jobs.unshift({...d,b:d.b+" $"});tab="jobs";toast("Mission publiée")}
+else if(f.id==="f2"){const idf=f.elements.idf.files[0],cvf=f.elements.cvf.files[0];if(idf.size>5e6||(cvf&&cvf.size>5e6)){toast("Chaque fichier doit faire 5 Mo au maximum");return}const p={n:d.n,c:d.c,v:d.v,p:d.p,d:d.d,r:5,k:0,ok:0,idf,cvf:cvf&&cvf.size?cvf:null,vs:"En attente"};pros.unshift(p);ids.unshift(p);tab="pros";toast("Profil créé : Kisalu va vérifier votre carte d'électeur")}
+cat="";document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab));render()});
+$("#q").addEventListener("input",()=>{if(tab==="post"||tab==="join"){tab="pros";document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===tab))}render()});
+$("#city").addEventListener("change",()=>render());
+let until=0;
+let deals=[{t:"Installation électrique d'un entrepôt",c:"Électricité",v:"Lubumbashi",a:800,st:"Payé",cl:"Société Mwamba",pr:"Patrick Mbuyi"},{t:"200 chemises de travail",c:"Couture et mode",v:"Kinshasa",a:450,st:"Payé",cl:"Entreprise Bolingo",pr:"Chantal Ngalula"},{t:"Site web d'une pharmacie",c:"Informatique",v:"Goma",a:300,st:"En cours",cl:"Pharmacie Amani",pr:"Esther Bahati"}];
+let reviews=[{s:5,r:"Client",x:"Mission livrée à temps. Savoir que l'argent était chez Kisalu m'a rassuré.",v:"Lubumbashi",c:"Électricité"},{s:5,r:"Prestataire",x:"J'ai été payée dès la validation du client, sans courir après l'argent.",v:"Kinshasa",c:"Couture et mode"},{s:4,r:"Client",x:"Kisalu a vite trouvé la bonne personne et s'est occupé de tout l'accord.",v:"Goma",c:"Informatique"}];
+let ids=[];
+let apps=[{j:"Carrelage d'une maison de 4 pièces",n:"Jonas Kabeya",st:"En attente"},{j:"Site vitrine pour une boulangerie",n:"Esther Bahati",st:"En attente"},{j:"Livraison de sacs de maïs",n:"Dieudonné Lokwa",st:"Présentée au client"}];
+const NEXT={"Paiement sécurisé":"En cours","En cours":"Terminé","Terminé":"Payé"},LBL={"Paiement sécurisé":"Confirmer la mise en relation","En cours":"Travail validé par le client","Terminé":"Libérer le paiement"};
+function adminHtml(){const pend=apps.filter(a=>a.st==="En attente").length,open=deals.filter(d=>d.st!=="Payé"),held=open.reduce((s,d)=>s+d.a,0),earned=deals.filter(d=>d.st==="Payé").reduce((s,d)=>s+d.a*.1,0),f=n=>n.toLocaleString("fr-FR");
+return `<h2>Administration Kisalu</h2><p class="meta">Démonstration : dans la vraie version, cet espace sera protégé par une connexion réservée à l'équipe Kisalu. Seule l'équipe voit les noms réels.</p>
+<div class="grid" style="margin:14px 0"><div class="card"><span class="meta">Candidatures à traiter</span><strong style="font-size:24px">${pend}</strong></div><div class="card"><span class="meta">Accords en cours</span><strong style="font-size:24px">${open.length}</strong></div><div class="card"><span class="meta">Fonds détenus pour les clients</span><strong style="font-size:24px">${f(held)} $</strong></div><div class="card"><span class="meta">Commissions gagnées (10 %)</span><strong style="font-size:24px">${f(earned)} $</strong></div></div>
+<h3 style="margin:20px 0 10px">Vérification d'identité</h3><div class="grid">${ids.length?ids.map((p,i)=>{p.idu=p.idu||URL.createObjectURL(p.idf);if(p.cvf&&!p.cvu)p.cvu=URL.createObjectURL(p.cvf);return `<article class="card"><strong>${esc(p.n)}</strong><div class="meta">${esc(p.c)} · ${esc(p.v)}</div><div>Carte d'électeur : <a href="${p.idu}" target="_blank" rel="noopener">${esc(p.idf.name)}</a></div><div>CV : ${p.cvf?`<a href="${p.cvu}" target="_blank" rel="noopener">${esc(p.cvf.name)}</a>`:"non fourni"}</div><span class="tag">${p.vs}</span>${p.vs==="En attente"?`<div class="row"><button data-idok="${i}">Valider l'identité</button><button class="sec" data-idno="${i}">Refuser</button></div>`:""}</article>`}).join(""):`<p class="empty">Aucun dossier à vérifier pour le moment.</p>`}</div>
+<h3 style="margin:20px 0 10px">Candidatures</h3><div class="grid">${apps.map((a,i)=>`<article class="card"><strong>${esc(a.n)}</strong><div>${esc(a.j)}</div><span class="tag">${a.st}</span>${a.st==="En attente"?`<button data-app="${i}">Présenter au client</button>`:""}</article>`).join("")}</div>
+<h3 style="margin:20px 0 10px">Accords et paiements</h3><div class="grid">${deals.map((d,i)=>`<article class="card"><strong>${esc(d.t)}</strong><div class="meta">Client : ${esc(d.cl)}<br>Prestataire : ${esc(d.pr)}</div><div>${f(d.a)} $ · part Kisalu : ${f(d.a*.1)} $ · prestataire : ${f(d.a*.9)} $</div><span class="tag">${d.st}</span>${NEXT[d.st]?`<button data-adv="${i}">${LBL[d.st]}</button>`:""}</article>`).join("")}</div>`}
+const ICON={"Tous":"🌍","Construction":"🧱","Électricité":"⚡","Plomberie":"🔧","Couture et mode":"🧵","Informatique":"💻","Transport et livraison":"🚚","Événementiel":"🎉","Agriculture":"🌱","Design et marketing":"🎨","Formation":"📚"};
+const DICT=[["Trouvez le bon prestataire congolais, ou trouvez du travail.","Find the right Congolese professional, or find work."],["Artisans, techniciens, créatifs et entreprises, au Congo comme dans la diaspora : publiez une mission ou proposez vos services, où que vous soyez.","Artisans, technicians, creatives and companies, in Congo and across the diaspora: post a mission or offer your services, wherever you are."],["KISALU · kisalu = « travail » en kikongo","KISALU · kisalu = “work” in Kikongo"],["Toutes les villes","All locations"],["Prestataires","Professionals"],["Prestataire","Professional"],["Publier une mission","Post a mission"],["Publier la mission","Post the mission"],["Devenir prestataire","Become a provider"],["Comment ça marche","How it works"],["Témoignages","Testimonials"],["Administration","Admin"],["Tous","All"],["Électricité","Electrical"],["Plomberie","Plumbing"],["Couture et mode","Tailoring & fashion"],["Informatique","IT"],["Transport et livraison","Transport & delivery"],["Événementiel","Events"],["Design et marketing","Design & marketing"],["Formation","Training"],["Client vérifié par Kisalu","Client verified by Kisalu"],["Vérifié","Verified"],["Demander via Kisalu","Request via Kisalu"],["Postuler aux missions","Apply to missions"],["Postuler","Apply"],["sur devis","on quote"],["dès ","from "],["/jour","/day"],[" avis)"," reviews)"],["Décrivez votre besoin, les prestataires vous répondent.","Describe your need and providers will reply."],["Budget (en $)","Budget (USD)"],["Titre","Title"],["Catégorie","Category"],["Ville","City or location"],["Votre nom","Your name"],["Nom complet","Full name"],["Métier","Trade"],["Tarif (ex. : 20 $/jour)","Rate (e.g. 20 $/day)"],["Présentez votre travail","Describe your work"],["Créer mon profil","Create my profile"],["Créez votre profil gratuit et recevez des demandes.","Create your free profile and receive requests."],["Photo ou scan de votre carte d'électeur (obligatoire)","Photo or scan of your voter card (required)"],["CV, si vous en avez un (PDF ou Word)","CV, if you have one (PDF or Word)"],["Gratuit","Free"],["Londres","London"],["Bruxelles","Brussels"],["Montréal","Montreal"],["À distance","Remote"],["Les montants sont convertis à un taux indicatif (1 dollar ≈ 2 800 FC ≈ 0,86 €), à remplacer par le taux du jour dans la version finale.","Amounts are converted at an indicative rate (1 US dollar ≈ 2,800 FC ≈ €0.86), to be replaced by the daily rate in the final version."]].sort((a,b)=>b[0].length-a[0].length);
+const RATE={USD:1,CDF:2800,EUR:.86},ORIG=new WeakMap();let lang="fr",cur="USD";
+function money(m){if(cur==="USD")return m;const v=Math.round(parseInt(m.replace(/\D/g,""))*RATE[cur]).toLocaleString("fr-FR");return cur==="CDF"?v+" FC":v+" €"}
+function localize(){document.documentElement.lang=lang;const PH={fr:"Ex. : électricien, couturière, site web",en:"E.g. electrician, tailor, website",sw:"Mf.: fundi umeme, mshonaji, tovuti",ln:"Ndakisa : électricien, couturier, site web"};$("#q").placeholder=PH[lang];
+const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName))continue;let o=ORIG.get(n);if(o===undefined){o=n.nodeValue;ORIG.set(n,o)}let t=o;if(lang!=="fr")for(const[a,b]of DICT){const r=lang==="en"?b:((TR[lang]||{})[a]||b);t=t.split(a).join(r)}t=t.replace(/\d[\d\s\u00a0\u202f]*\$/g,m=>money(m));if(t!==n.nodeValue)n.nodeValue=t}}
+const TR={sw:{"Trouvez le bon prestataire congolais, ou trouvez du travail.":"Pata mtaalamu Mkongomani anayekufaa, au pata kazi.","Artisans, techniciens, créatifs et entreprises, au Congo comme dans la diaspora : publiez une mission ou proposez vos services, où que vous soyez.":"Mafundi, wataalamu, wabunifu na kampuni, nchini Kongo na kwa diaspora: chapisha kazi au toa huduma zako, popote ulipo.","KISALU · kisalu = « travail » en kikongo":"KISALU · kisalu = “kazi” kwa Kikongo","Toutes les villes":"Maeneo yote","Prestataires":"Watoa huduma","Prestataire":"Mtoa huduma","Publier une mission":"Chapisha kazi","Publier la mission":"Chapisha kazi hiyo","Devenir prestataire":"Kuwa mtoa huduma","Comment ça marche":"Jinsi inavyofanya kazi","Témoignages":"Ushuhuda","Administration":"Usimamizi","Tous":"Zote","Électricité":"Umeme","Plomberie":"Mabomba","Couture et mode":"Ushonaji na mitindo","Informatique":"TEHAMA","Transport et livraison":"Usafirishaji","Événementiel":"Matukio","Design et marketing":"Ubunifu na masoko","Formation":"Mafunzo","Client vérifié par Kisalu":"Mteja amethibitishwa na Kisalu","Vérifié":"Amethibitishwa","Demander via Kisalu":"Omba kupitia Kisalu","Postuler aux missions":"Omba kazi","Postuler":"Omba","sur devis":"kwa makubaliano","dès ":"kuanzia ","/jour":"/siku"," avis)":" maoni)","Décrivez votre besoin, les prestataires vous répondent.":"Eleza mahitaji yako na watoa huduma watakujibu.","Budget (en $)":"Bajeti (USD)","Titre":"Kichwa","Catégorie":"Kundi","Ville":"Mji au eneo","Votre nom":"Jina lako","Nom complet":"Jina kamili","Métier":"Taaluma","Tarif (ex. : 20 $/jour)":"Bei (mf. 20 $/siku)","Présentez votre travail":"Eleza kazi yako","Créer mon profil":"Fungua wasifu wangu","Créez votre profil gratuit et recevez des demandes.":"Fungua wasifu wako bila malipo na upokee maombi.","Photo ou scan de votre carte d'électeur (obligatoire)":"Picha au skani ya kadi yako ya mpiga kura (lazima)","CV, si vous en avez un (PDF ou Word)":"CV, ukiwa nayo (PDF au Word)","Gratuit":"Bure","À distance":"Kwa mbali","Les montants sont convertis à un taux indicatif (1 dollar ≈ 2 800 FC ≈ 0,86 €), à remplacer par le taux du jour dans la version finale.":"Kiasi hubadilishwa kwa kiwango cha makadirio (dola 1 ≈ FC 2 800 ≈ €0,86), kitabadilishwa na kiwango cha siku katika toleo la mwisho."},
+ln:{"Trouvez le bon prestataire congolais, ou trouvez du travail.":"Zwa mosali malamu ya Congo, to zwa mosala.","Artisans, techniciens, créatifs et entreprises, au Congo comme dans la diaspora : publiez une mission ou proposez vos services, où que vous soyez.":"Ba artisan, ba technicien, ba créatif mpe ba entreprise, na Congo mpe na diaspora : pesa mosala to pesa ba service na yo, esika nyonso oyo ozali.","KISALU · kisalu = « travail » en kikongo":"KISALU · kisalu = « mosala » na kikongo","Toutes les villes":"Bisika nyonso","Prestataires":"Basali","Prestataire":"Mosali","Publier une mission":"Pesa mosala","Publier la mission":"Pesa mosala yango","Devenir prestataire":"Kokoma mosali","Comment ça marche":"Ndenge esalaka","Témoignages":"Matatoli","Administration":"Bokambi","Tous":"Nyonso","Couture et mode":"Kotonga bilamba mpe mode","Transport et livraison":"Transport mpe livraison","Événementiel":"Bafetɛ","Design et marketing":"Design mpe marketing","Formation":"Mateya","Client vérifié par Kisalu":"Client oyo Kisalu ekondisi","Vérifié":"Ekondisami","Demander via Kisalu":"Senga na nzela ya Kisalu","Postuler aux missions":"Senga mosala","Postuler":"Senga","sur devis":"na devis","dès ":"uta ","/jour":"/mokolo"," avis)":" makanisi)","Décrivez votre besoin, les prestataires vous répondent.":"Limbola oyo olingi mpe basali bakozongisela yo.","Budget (en $)":"Budget (USD)","Titre":"Litombó","Catégorie":"Lolenge","Ville":"Mboka to esika","Votre nom":"Nkombo na yo","Nom complet":"Nkombo mobimba","Métier":"Mosala","Tarif (ex. : 20 $/jour)":"Ntalo (ndakisa : 20 $/mokolo)","Présentez votre travail":"Limbola mosala na yo","Créer mon profil":"Kosala profil na ngai","Créez votre profil gratuit et recevez des demandes.":"Sala profil na yo ya ofele mpe zwa ba demande.","Photo ou scan de votre carte d'électeur (obligatoire)":"Elilingi to scan ya carte ya mpili na yo (esengeli)","CV, si vous en avez un (PDF ou Word)":"CV, soki ozali na yango (PDF to Word)","Gratuit":"Ofele","À distance":"Na mosika","Les montants sont convertis à un taux indicatif (1 dollar ≈ 2 800 FC ≈ 0,86 €), à remplacer par le taux du jour dans la version finale.":"Ba montant ebongolami na taux ya kokanisa (dollar 1 ≈ FC 2 800 ≈ €0,86), ekobongolama na taux ya mokolo na version ya suka."}};
+const _render=render;render=function(){_render();localize()};
+$("#lang").addEventListener("change",e=>{lang=e.target.value;localize()});
+$("#cur").addEventListener("change",e=>{cur=e.target.value;localize()});
+function reviewsHtml(){const n=deals.length,tot=deals.reduce((s,d)=>s+d.a,0),avg=reviews.length?(reviews.reduce((s,r)=>s+r.s,0)/reviews.length).toFixed(1):"-";
+return `<h2>Témoignages</h2><p class="meta">Des clients et des prestataires parlent des missions conclues grâce à Kisalu. Les noms restent confidentiels.</p>
+<div class="grid" style="margin:14px 0"><div class="card"><span class="meta">Accords conclus</span><strong style="font-size:24px">${n}</strong></div><div class="card"><span class="meta">Montant sécurisé chez Kisalu</span><strong style="font-size:24px">${tot.toLocaleString("fr-FR")} $</strong></div><div class="card"><span class="meta">Note moyenne</span><strong style="font-size:24px">${avg} / 5</strong></div></div>
+<div class="grid">${reviews.map(r=>`<article class="card"><div style="color:var(--ac2)" aria-label="${r.s} étoiles sur 5">${"★".repeat(r.s)+"☆".repeat(5-r.s)}</div><div>${esc(r.x)}</div><div class="meta">${esc(r.r)} · ${esc(r.c)} · ${esc(r.v)}</div></article>`).join("")}</div>
+<h3 style="margin:22px 0 8px">Laisser un témoignage</h3>${n?`<form id="f5"><label>Mission conclue<select name="dl">${deals.map((d,i)=>`<option value="${i}">${esc(d.t)} (${esc(d.v)})</option>`).join("")}</select></label><label>Vous êtes<select name="r"><option value="Client">Client</option><option value="Prestataire">Prestataire</option></select></label><label>Note<select name="s"><option value="5">5 étoiles</option><option value="4">4 étoiles</option><option value="3">3 étoiles</option><option value="2">2 étoiles</option><option value="1">1 étoile</option></select></label><label>Votre témoignage<textarea name="x" rows="3" required></textarea></label><button>Publier mon témoignage</button></form>`:'<p class="empty">Les témoignages s\'ouvrent après un accord entre un client et un prestataire.</p>'}`}
+function howHtml(){return `<h2>Comment ça marche</h2><p class="meta">Kisalu est l'intermédiaire : clients et prestataires ne s'échangent jamais leurs coordonnées sur la plateforme.</p>
+<ol style="padding-left:20px;max-width:560px"><li>Le client publie sa mission gratuitement.</li><li>Les prestataires Premium postulent auprès de Kisalu.</li><li>Kisalu présente les candidats au client et assure la liaison.</li><li>Quand les deux parties sont d'accord, le client verse le paiement à Kisalu, qui garde 10 % de commission.</li><li>Kisalu confirme la mise en relation et le travail commence.</li><li>Le travail terminé et validé, Kisalu verse 90 % du montant au prestataire.</li></ol>
+<h3 style="margin:22px 0 8px">Client : déposer le paiement</h3><p class="meta">À faire une fois l'accord conclu avec le prestataire.</p>
+<form id="f4"><label>Mission<select name="m">${jobs.map((j,i)=>`<option value="${i}">${esc(j.t)} (${esc(j.b)})</option>`).join("")}</select></label><label>Opérateur<select><option>M-Pesa</option><option>Airtel Money</option><option>Orange Money</option><option>Africell Money</option></select></label><label>Numéro Mobile Money<input type="tel" required placeholder="Ex. : 0812345678"></label><button>Déposer le paiement chez Kisalu</button><p class="meta">Commission de Kisalu : 10 % du montant, déduite avant le versement au prestataire. Paiement simulé : aucun argent n'est prélevé.</p></form>`}
+function go(t){tab=t;document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t));render()}
+function premiumHtml(){const on=until>Date.now(),d=new Date(until).toLocaleDateString("fr-FR");
+return `<h2>Kisalu Premium</h2><p class="meta">Chercher du travail est payant : <strong>5 000 FC pour 1 mois</strong>, renouvelable au même prix. Les clients publient leurs missions gratuitement.</p>
+<div class="grid" style="margin:14px 0"><article class="card"><strong>Gratuit</strong><div>Créer votre profil</div><div>Parcourir prestataires et missions</div><div>Recevoir les demandes des clients</div></article>
+<article class="card" style="border:2px solid var(--ac2)"><strong>Premium · 5 000 FC / mois</strong><div>Postuler aux missions</div><div>Profil mis en avant dans les résultats</div><div>Badge Premium sur votre profil</div><div class="meta">Alertes de nouvelles missions et statistiques de visites : bientôt.</div></article></div>
+${on?`<p class="ver">Premium actif jusqu'au ${d}.</p>`:''}
+<form id="f3"><label>Opérateur<select><option>M-Pesa</option><option>Airtel Money</option><option>Orange Money</option><option>Africell Money</option></select></label><label>Numéro Mobile Money<input type="tel" required placeholder="Ex. : 0812345678"></label><button>${on?'Renouveler':'Activer'} pour 5 000 FC</button><p class="meta">Paiement simulé dans cette démonstration : aucun argent n'est prélevé.</p></form>`}
+render();
+</script>
+</body>
+</html>
